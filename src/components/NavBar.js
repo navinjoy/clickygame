@@ -14,7 +14,7 @@ const NavBar = props => (
                     <p className="navbar-brand center"> Click an Image to Begin!</p>
                 </li>
                 <li>
-                    <p className="navbar-brand center"> Score : 0 {props.score} | Top Score : 0 {props.topscore}</p>                    
+                    <p className="navbar-brand center"> Score : {props.userScore} | Top Score : {props.maxScore}</p>                    
                 </li>
             </ul>
     </nav>

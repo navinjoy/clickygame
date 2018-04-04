@@ -31,25 +31,31 @@ class App extends Component {
         - update Max score with size of Arr only if current MaxScore > previous max score
      */
     if (this.state.clickedIds.includes(id)) {
-      if (this.state.maxScore < this.state.clickedIds.length) {
-        console.log('inside')
-        this.setState({maxScore: this.state.clickedIds.length });
-      }
+      console.log('inside', 'maxScore:', this.state.maxScore,'userScore:',this.state.userScore ,'arrLength', this.state.clickedIds.length)
+      this.setState({userScore: 0 });
+      
       alert("Try Again !!");
       this.setState({clickedIds:[]});
     } else {
       this.state.clickedIds.push(id);
       this.setState({userScore:this.state.clickedIds.length})
+      if (this.state.maxScore < this.state.clickedIds.length) {
+        this.setState({maxScore: this.state.clickedIds.length });
+      }
     }
-    console.log(this.state.userScore, this.state.maxScore);
     this.setState({characters :this.shuffleArr(this.state.characters.filter((char)=>char.image))});
+    console.log('userScore:',this.state.userScore,'maxScore:', this.state.maxScore);
   }
+
 //shuffleArr(this.state.characters.filter((char)=>char.location))
   render() {
     return (
       <Wrapper>
         {
-            <NavBar />   
+            <NavBar 
+              userScore={this.state.userScore}
+              maxScore={this.state.maxScore}
+            />   
         }
         {   
           <Header backgroundImg="https://wallpaperbrowse.com/media/images/518071-background-hd_xO1TwRc.jpg" >
